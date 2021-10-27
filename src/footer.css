@@ -1,0 +1,19 @@
+.footers {
+    margin-top: 3%;
+    text-align: center;
+    max-width: 100%;
+    background: black;
+    padding: 16px 24px;
+    align-items: baseline;
+    animation: myanimation 10s infinite;
+
+    
+}
+@keyframes myanimation {
+    0% {color: white;}
+    25% {color: yellow;}
+    50% {color: green;}
+    75% {color: orange;}
+    100% {color: pink;}
+
+}

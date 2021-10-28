@@ -53,6 +53,12 @@ let [data, setData]=React.useState([]);
     }
   
   }
+
+  // let url='http://65.2.148.239:8000/test/api/delete'
+  // async function deleteData() {
+  //   response= await axios.post(url, deleteData)
+  // }
+  
   return (
     <div className="candidates">
       
@@ -67,10 +73,10 @@ let [data, setData]=React.useState([]);
           <th>Email</th>
           <th>Address</th>
           <th>Audition For</th>
-          <th>Delete</th>
-          <th>Edit</th>
+          <th>Action</th>
+          {/* <th>Edit</th> */}
         </tr>
-        {data.filter((el)=>el.full_name!=="undefined").map((ele)=><tr>
+        {data.filter((el)=>el.full_name!=="undefined" && el.full_name!=="null" &&el.audition!=="undefined").map((ele)=><tr>
           <td style={{fontWeight:"bold"}}>{ele.full_name!=="undefined"?ele.full_name:"Invalid Data"}</td>
           <td>{ele.father_name!=="undefined"?ele.father_name:"Invalid Data"}</td>
           <td>{ele.dob!=="undefined"?ele.dob:"Invalid Data"}</td>
@@ -80,7 +86,7 @@ let [data, setData]=React.useState([]);
           <td>{ele.address!=="undefined"?ele.address:"Invalid Data"}</td>
           <td>{ele.audition!=="undefined"?ele.audition:"Invalid Data"}</td>
           <td><button className="delete_btn">Delete</button></td>
-          <td><button className="edit_btn">Edit</button></td>
+          {/* <td><button className="edit_btn">Edit</button></td> */}
         </tr>)}
       </table>
     </div>

@@ -1,10 +1,12 @@
- import { BrowserRouter, Switch, Route} from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
 import Header from "./Header";
 import Hero from "./Hero";
 import Audition from "./Audition";
 import Footer from "./Footer";
 import Table from "./Table";
 import './App.css';
+
 
 
 function App() {

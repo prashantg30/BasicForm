@@ -9,11 +9,11 @@ export default function Audition() {
   const [dob, setDob] = useState(null);
   const [contact, setContact] = useState(null);
   const [address, setAddress] = useState(null);
-  const [auditons, setAuditons] = useState(null);
+  const [auditon, setAuditon] = useState(null);
   const [email, setEmail] = useState(null);
 
 function resetValue(){
-    setAuditons(null);
+    setAuditon(null);
     setGender(null);
     setName('');
     setFathers_name('');
@@ -21,22 +21,21 @@ function resetValue(){
     setContact('');
     setAddress('');
     setEmail('');
-    alert(`Data reset successfully`)
 }
 
-console.log(auditons)
+console.log(auditon)
 
 function checkValidation(){
   let jsonData = {};
-  if(gender === null || name === null || fathers_name === null || dob === null || contact === null || auditons === null ||
+  if(gender === null || name === null || fathers_name === null || dob === null || contact === null || auditon === null ||
     address === null || email === null){
       alert(`Fields can't be empty`)
-      
+      return null;
   }
   else {
   jsonData={
     gender: gender,
-    auditon: auditons,
+    audition: auditon,
     full_name: name,
     father_name: fathers_name,
     dob: dob,
@@ -44,8 +43,9 @@ function checkValidation(){
     address: address,
     email: email,
   }
+  return jsonData;
 }
-return jsonData;
+
 }
 
 
@@ -56,21 +56,21 @@ return jsonData;
 
   let url = 'http://65.2.148.239:8000/test/api/insert'
 
-  //funciton to post data to backend
+  //function to post data to backend
 async function postData(){
   let data = checkValidation()
+  console.log(data)
   let response;
+  
   if(data){
   response = await axios.post(url, data)
-  }
   if(response.status === 200){
-    alert('Data Submitted Succesfully') 
+    alert('Data Submitted Succesfully');
   }
   resetValue();
+  }
 }
-
-
-  return (
+   return (
     <div className="audition_form"> 
       <h1>MEGA-AUDITION FORM</h1>
       <form className="submission_form">
@@ -142,7 +142,7 @@ async function postData(){
         <br />
         {/* <label>E-Mail</label> */}
         <input
-          type="text"
+          type="email"
           className="text_box"
           placeholder="Your Email*"
           value={email}
@@ -151,10 +151,10 @@ async function postData(){
         <br />
         {/* <label for="Auditions">Audition For</label> */}
         <select
-          name="Auditions"
-          id="Auditons"
+          name="Audition"
+          id="Auditon"
           className="dropdown"
-          onChange={(e) => setAuditons(e.target.value)}
+          onChange={(e) => setAuditon(e.target.value)}
         >
           <option value="Choose Your Talent">Choose Your Talent</option>
           <option value="Dancing">Dancing</option>
@@ -183,7 +183,7 @@ async function postData(){
         >
           Submit
         </button>
-        <button type="button" className="reset_btn" onClick={() => resetValue()}>
+        <button type="button" className="reset_btn" onClick={() => {resetValue(); alert('Data reset Successfully')}}>
           Reset
         </button>
         {/* <input type="button" className="submit_btn">Submit</input>
